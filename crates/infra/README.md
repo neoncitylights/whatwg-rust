@@ -2,9 +2,9 @@
 
 [![License](https://img.shields.io/badge/License-MIT%20%26%20Apache%202.0-blue)](#license)
 [![docs.rs](https://img.shields.io/docsrs/whatwg-infra/latest)](https://docs.rs/whatwg-infra/)
-[![CI](https://github.com/acmuta-research/whatwg-infra-rs/actions/workflows/main.yml/badge.svg)](https://github.com/acmuta-research/whatwg-infra-rs/actions/workflows/main.yml)
-[![Security audit](https://github.com/acmuta-research/whatwg-infra-rs/actions/workflows/security-audit.yml/badge.svg)](https://github.com/acmuta-research/whatwg-infra-rs/actions/workflows/security-audit.yml)
-[![codecov](https://codecov.io/gh/acmuta-research/whatwg-infra-rs/branch/main/graph/badge.svg?token=6ZSIWAQTHU)](https://codecov.io/gh/acmuta-research/whatwg-infra-rs)
+[![CI](https://github.com/neoncitylights/whatwg-rust/actions/workflows/main.yml/badge.svg)](https://github.com/neoncitylights/whatwg-rust/actions/workflows/main.yml)
+[![Security audit](https://github.com/neoncitylights/whatwg-rust/actions/workflows/security-audit.yml/badge.svg)](https://github.com/neoncitylights/whatwg-rust/actions/workflows/security-audit.yml)
+[![codecov](https://codecov.io/gh/neoncitylights/whatwg-rust/branch/main/graph/badge.svg?token=6ZSIWAQTHU)](https://codecov.io/gh/neoncitylights/whatwg-rust)
 
 A tiny Rust crate that implements parts of the WHATWG Infra Standard. Specifically, it implements the following:
 
