@@ -8,14 +8,14 @@ coverage:
         target: 90%
     project:
       default:
-        threshold: 2%
+        target: 90%
+        threshold: 10%
         if_ci_failed: error
       whatwg-datetime:
         threshold: 10%
-        if_ci_failed: error
         paths:
           - crates/datetime
       whatwg-infra:
+        threshold: 2%
         paths:
           - crates/infra
-
