@@ -10,3 +10,12 @@ coverage:
       default:
         threshold: 2%
         if_ci_failed: error
+      whatwg-datetime:
+        threshold: 10%
+        if_ci_failed: error
+        paths:
+          - crates/datetime
+      whatwg-infra:
+        paths:
+          - crates/infra
+
