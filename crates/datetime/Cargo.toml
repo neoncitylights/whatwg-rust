@@ -1,0 +1,35 @@
+[package]
+name = "whatwg-datetime"
+version = "0.1.0"
+authors = [
+	"Samantha Nguyen, <sam.t.nguyenn@gmail.com>",
+]
+description = "A Rust crate for parsing the datetime microsyntax, as defined by the WHATWG HTML Standard"
+homepage = "https://github.com/acmuta-research/whatwg-datetime-rs"
+repository = "https://github.com/acmuta-research/whatwg-datetime-rs"
+documentation = "https://docs.rs/whatwg-datetime"
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+edition = "2021"
+keywords = ["whatwg", "html", "html-datetime", "datetime"]
+categories = ["parsing", "text-processing"]
+exclude = [
+	".devcontainer",
+	".github",
+	".vscode",
+	".idea",
+	"deny.toml",
+	".commitlintrc.json",
+	"package.json",
+	"package-lock.json",
+	"fuzz",
+	"book",
+	"benches",
+]
+
+[dependencies]
+# chrono < 0.5 brings in a deprecated version of the `time` crate via `oldtime` feature by default
+# this makes it explicitly not do this as there is an advisory warning against this:
+# See: https://github.com/chronotope/chrono/issues/602
+chrono = { version = "0.4", default-features = false, features = ["clock", "std", "wasmbind"] }
+whatwg-infra = "0.2.1"

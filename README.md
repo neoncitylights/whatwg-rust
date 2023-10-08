@@ -31,7 +31,7 @@ Open your favorite terminal and clone this locally.
 |--------------------------|----------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | GitHub Codespaces        | [`devcontainer.json`](./.devcontainer/devcontainer.json) | [Reference](https://containers.dev/implementors/json_reference/)                                                 |
 | GitHub Actions           | [`.github/workflows`](./.github/workflows)               | [Reference](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)               |
-| Cargo package            | [`Cargo.toml`](crates/pkg1/Cargo.toml)                            | [Reference](https://doc.rust-lang.org/cargo/reference/manifest.html)                                             |
+| Cargo package            | [`Cargo.toml`](crates/crates/infra/Cargo.toml)                            | [Reference](https://doc.rust-lang.org/cargo/reference/manifest.html)                                             |
 | Clippy (Rust linter)     | [`.clippy.toml`](./.clippy.toml)                         | [Repository](https://github.com/rust-lang/rust-clippy), [Reference]( https://rust-lang.github.io/rust-clippy/) |
 | Rustfmt (Rust formatter) | [`.rustfmt.toml`](./.rustfmt.toml)                       | [Repository](https://github.com/rust-lang/rustfmt), [Reference](https://rust-lang.github.io/rustfmt/)           |
 | `cargo-deny`             | [`deny.toml`](./deny.toml)                               | [Repository](https://github.com/EmbarkStudios/cargo-deny)                                                        |
