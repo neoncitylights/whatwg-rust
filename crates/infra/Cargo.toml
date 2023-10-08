@@ -1,0 +1,30 @@
+[package]
+name = "whatwg-infra"
+version = "0.2.1"
+authors = [
+	"Samantha Nguyen, <contact@samanthanguyen.me>",
+]
+description = "Tiny Rust-based implementation of the WHATWG Infra Standard"
+homepage = "https://github.com/neoncitylights/whatwg-rust"
+repository = "https://github.com/neoncitylights/whatwg-rust"
+documentation = "https://docs.rs/whatwg-infra"
+keywords = ["whatwg", "infra", "spec", "specification", "standard"]
+categories = ["no-std", "parsing", "text-processing"]
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+edition = "2021"
+rust-version = "1.63.0"
+
+exclude = [
+	".devcontainer",
+	".github",
+	".vscode",
+	".idea",
+	"deny.toml",
+	".commitlintrc.json",
+	"package.json",
+	"package-lock.json",
+	"fuzz",
+	"book",
+	"benches",
+]

@@ -1,0 +1,21 @@
+# https://docs.codecov.com/docs/codecov-yaml
+# https://docs.codecov.com/docs/codecovyml-reference
+coverage:
+  range: 90...100
+  status:
+    patch:
+      default:
+        target: 90%
+    project:
+      default:
+        target: 90%
+        threshold: 10%
+        if_ci_failed: error
+      whatwg-datetime:
+        threshold: 10%
+        paths:
+          - crates/datetime
+      whatwg-infra:
+        threshold: 2%
+        paths:
+          - crates/infra

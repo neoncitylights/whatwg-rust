@@ -1,0 +1,13 @@
+// pub(crate) const TOKEN_ABBR_DAY: char = 'D';
+// pub(crate) const TOKEN_ABBR_HOUR: char = 'H';
+// pub(crate) const TOKEN_ABBR_MIN: char = 'M';
+// pub(crate) const TOKEN_ABBR_SEC: char = 'S';
+pub(crate) const TOKEN_ABBR_WEEK: char = 'W';
+pub(crate) const TOKEN_HYPHEN: char = '-';
+pub(crate) const TOKEN_COLON: char = ':';
+pub(crate) const TOKEN_T: char = 'T';
+pub(crate) const TOKEN_Z: char = 'Z';
+pub(crate) const TOKEN_PLUS: char = '+';
+pub(crate) const TOKEN_MINUS: char = '-';
+pub(crate) const TOKEN_DOT: char = '.';
+pub(crate) const TOKEN_SPACE: char = ' ';
