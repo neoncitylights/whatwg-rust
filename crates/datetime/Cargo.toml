@@ -2,7 +2,7 @@
 name = "whatwg-datetime"
 version = "0.1.0"
 authors = [
-	"Samantha Nguyen, <sam.t.nguyenn@gmail.com>",
+	"Samantha Nguyen, <contact@samanthanguyen.me>",
 ]
 description = "A Rust crate for parsing the datetime microsyntax, as defined by the WHATWG HTML Standard"
 homepage = "https://github.com/neoncitylights/whatwg-rust"
