@@ -48,7 +48,7 @@ impl InfraUtf16Surrogate for u16 {
 /// Checks if a `u16` is a UTF-16 codepoint defined in the range of
 /// U+D800 to U+DFFF, inclusive.
 ///
-/// See also:[WHATWG Infra Standard definition][whatwg-infra-dfn]
+/// See also: [WHATWG Infra Standard definition][whatwg-infra-dfn]
 ///
 /// **Note**: This function substitutes the nightly-gated feature in Rust,
 /// [`utf16_extra`][utf16-extra-feat] ([issue #94919][utf16-extra-gh]).

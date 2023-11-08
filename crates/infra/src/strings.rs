@@ -127,7 +127,7 @@ pub fn trim_ascii_whitespace(s: &str) -> &str {
 ///
 /// See also: [WHATWG Infra Standard definition][whatwg-infra-dfn]
 ///
-/// [whawtg-infra-dfn]: https://infra.spec.whatwg.org/#strip-and-collapse-ascii-whitespace
+/// [whatwg-infra-dfn]: https://infra.spec.whatwg.org/#strip-and-collapse-ascii-whitespace
 ///
 /// # Examples
 /// ```

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.2 (2023-11-08)
+
+- Fixed typos in documentation for [`trim_collapse_ascii_whitespace()`] and [`is_surrogate_utf16()`]
+- Fixed/updated repository URLs
+
 ## 0.2.1 (2023-05-15)
 
 - Removed `#[must_use]` attribute from `collect_codepoints()`, to allow for use cases for skipping certain codepoints (e.g skipping ASCII whitespace)
