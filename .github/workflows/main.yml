@@ -111,18 +111,19 @@ jobs:
         rustup set profile minimal
         rustup toolchain install nightly
         rustup override set nightly
+        rustup component add miri
     - name: Print environment info
       run: |
         rustc --version --verbose
         cargo --version
         rustup --version
+        cargo miri --version
     - name: Cache dependencies
       uses: Swatinem/rust-cache@v2
       with:
         shared-key: full-build-cache
-    - name: Install Miri
+    - name: Setup Miri
       run: |
-        rustup component add miri
         cargo miri setup
     - name: Run tests with Miri
       run: cargo miri test
