@@ -1,5 +1,7 @@
 # Changelog
 
+## Unreleased (YYYY-MM-DD)
+
 ## 0.2.2 (2023-11-08)
 
 - Fixed typos in documentation for [`trim_collapse_ascii_whitespace()`] and [`is_surrogate_utf16()`]
