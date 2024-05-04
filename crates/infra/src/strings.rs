@@ -15,6 +15,7 @@ pub trait InfraStr {
 	fn collect_codepoints<P>(&self, position: &mut usize, predicate: P) -> String
 	where
 		P: FnMut(char) -> bool;
+	/// See the documentation for [`skip_codepoints()`]
 	fn skip_codepoints<P>(&self, position: &mut usize, predicate: P)
 	where
 		P: FnMut(char) -> bool;
@@ -207,7 +208,7 @@ where
 }
 
 /// A non-allocating version of [`collect_codepoints()`] for skipping/ignoring
-/// a series of codepoints that match a certain predicate
+/// a series of codepoints that match a certain predicate.
 ///
 /// ```
 /// use whatwg_infra::skip_codepoints;
