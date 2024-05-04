@@ -127,7 +127,7 @@ mod tests {
 			Some(Utc.from_utc_datetime(&NaiveDateTime::new(
 				NaiveDate::from_ymd_opt(2004, 12, 31).unwrap(),
 				NaiveTime::from_hms_opt(12, 31, 59).unwrap(),
-			),))
+			)))
 		);
 	}
 
