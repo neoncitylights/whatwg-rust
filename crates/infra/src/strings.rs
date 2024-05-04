@@ -208,6 +208,18 @@ where
 
 /// A non-allocating version of [`collect_codepoints()`] for skipping/ignoring
 /// a series of codepoints that match a certain predicate
+///
+/// ```
+/// use whatwg_infra::skip_codepoints;
+///
+/// let s = "alice_bob";
+/// let mut position = 0usize;
+///
+/// skip_codepoints(s, &mut position, |c| c.is_ascii_alphabetic());
+///
+/// assert_eq!(position, 5);
+/// assert_eq!(&s[position..], "_bob");
+/// ```
 pub fn skip_codepoints<P>(s: &str, position: &mut usize, mut predicate: P)
 where
 	P: FnMut(char) -> bool,
@@ -312,8 +324,9 @@ mod test {
 
 	#[test]
 	fn skip_codepoints() {
-		let mut position = 0usize;
 		let s = "1234test";
+		let mut position = 0usize;
+
 		s.skip_codepoints(&mut position, |c| c.is_ascii_digit());
 
 		assert_eq!(position, 4);
@@ -322,8 +335,8 @@ mod test {
 
 	#[test]
 	fn skip_codepoints_no_matches_early_exit() {
-		let mut position = 0usize;
 		let s = "1234test";
+		let mut position = 0usize;
 		s.skip_codepoints(&mut position, |c| c.is_ascii_alphabetic());
 
 		assert_eq!(position, 0);
@@ -331,9 +344,21 @@ mod test {
 	}
 
 	#[test]
-	fn skip_codepoints_empty_str() {
+	fn skip_codepoints_match_until_end() {
+		let s = "123456789";
 		let mut position = 0usize;
+
+		s.skip_codepoints(&mut position, |c| c.is_ascii_digit());
+
+		assert_eq!(position, 9);
+		assert_eq!(&s[position..], "");
+	}
+
+	#[test]
+	fn skip_codepoints_empty_str() {
 		let s = "";
+		let mut position = 0usize;
+
 		s.skip_codepoints(&mut position, |c| c.is_ascii_digit());
 
 		assert_eq!(position, 0);
