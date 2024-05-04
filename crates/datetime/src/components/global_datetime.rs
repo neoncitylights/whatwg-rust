@@ -1,6 +1,6 @@
 use crate::tokens::{TOKEN_SPACE, TOKEN_T};
 use crate::{parse_date_component, parse_time_component, parse_timezone_offset_component};
-use chrono::{DateTime, Duration, NaiveDateTime, Utc};
+use chrono::{DateTime, Duration, NaiveDateTime, TimeZone, Utc};
 
 /// Parse a [proleptic-Gregorian date][proleptic-greg] consisting
 /// of a date, time, and an optional time-zone offset
@@ -57,25 +57,22 @@ pub fn parse_global_datetime(s: &str) -> Option<DateTime<Utc>> {
 		time.overflowing_sub_signed(timezone_offset_as_duration).0,
 	);
 
-	Some(DateTime::<Utc>::from_utc(naive_datetime, Utc))
+	Some(Utc.from_utc_datetime(&naive_datetime))
 }
 
 #[cfg(test)]
 mod tests {
 	use super::parse_global_datetime;
-	use chrono::{DateTime, NaiveDate, NaiveDateTime, NaiveTime, Utc};
+	use chrono::{NaiveDate, NaiveDateTime, NaiveTime, TimeZone, Utc};
 
 	#[test]
 	fn test_parse_global_datetime_t_hm() {
 		assert_eq!(
 			parse_global_datetime("2004-12-31T12:31"),
-			Some(DateTime::<Utc>::from_utc(
-				NaiveDateTime::new(
-					NaiveDate::from_ymd_opt(2004, 12, 31).unwrap(),
-					NaiveTime::from_hms_opt(12, 31, 0).unwrap(),
-				),
-				Utc
-			))
+			Some(Utc.from_utc_datetime(&NaiveDateTime::new(
+				NaiveDate::from_ymd_opt(2004, 12, 31).unwrap(),
+				NaiveTime::from_hms_opt(12, 31, 0).unwrap(),
+			)))
 		);
 	}
 
@@ -83,13 +80,10 @@ mod tests {
 	fn test_parse_global_datetime_t_hms() {
 		assert_eq!(
 			parse_global_datetime("2004-12-31T12:31:59"),
-			Some(DateTime::<Utc>::from_utc(
-				NaiveDateTime::new(
-					NaiveDate::from_ymd_opt(2004, 12, 31).unwrap(),
-					NaiveTime::from_hms_opt(12, 31, 59).unwrap(),
-				),
-				Utc
-			))
+			Some(Utc.from_utc_datetime(&NaiveDateTime::new(
+				NaiveDate::from_ymd_opt(2004, 12, 31).unwrap(),
+				NaiveTime::from_hms_opt(12, 31, 59).unwrap(),
+			)))
 		);
 	}
 
@@ -97,13 +91,10 @@ mod tests {
 	fn test_parse_global_datetime_t_hms_milliseconds() {
 		assert_eq!(
 			parse_global_datetime("2027-11-29T12:31:59.123"),
-			Some(DateTime::<Utc>::from_utc(
-				NaiveDateTime::new(
-					NaiveDate::from_ymd_opt(2027, 11, 29).unwrap(),
-					NaiveTime::from_hms_milli_opt(12, 31, 59, 123).unwrap(),
-				),
-				Utc
-			))
+			Some(Utc.from_utc_datetime(&NaiveDateTime::new(
+				NaiveDate::from_ymd_opt(2027, 11, 29).unwrap(),
+				NaiveTime::from_hms_milli_opt(12, 31, 59, 123).unwrap(),
+			)))
 		);
 	}
 
@@ -111,13 +102,10 @@ mod tests {
 	fn test_parse_global_datetime_t_hms_z() {
 		assert_eq!(
 			parse_global_datetime("2004-12-31T12:31:59Z"),
-			Some(DateTime::<Utc>::from_utc(
-				NaiveDateTime::new(
-					NaiveDate::from_ymd_opt(2004, 12, 31).unwrap(),
-					NaiveTime::from_hms_opt(12, 31, 59).unwrap(),
-				),
-				Utc
-			))
+			Some(Utc.from_utc_datetime(&NaiveDateTime::new(
+				NaiveDate::from_ymd_opt(2004, 12, 31).unwrap(),
+				NaiveTime::from_hms_opt(12, 31, 59).unwrap(),
+			)))
 		);
 	}
 
@@ -125,13 +113,10 @@ mod tests {
 	fn test_parse_global_datetime_space_hm() {
 		assert_eq!(
 			parse_global_datetime("2004-12-31 12:31"),
-			Some(DateTime::<Utc>::from_utc(
-				NaiveDateTime::new(
-					NaiveDate::from_ymd_opt(2004, 12, 31).unwrap(),
-					NaiveTime::from_hms_opt(12, 31, 0).unwrap(),
-				),
-				Utc
-			))
+			Some(Utc.from_utc_datetime(&NaiveDateTime::new(
+				NaiveDate::from_ymd_opt(2004, 12, 31).unwrap(),
+				NaiveTime::from_hms_opt(12, 31, 0).unwrap(),
+			)))
 		);
 	}
 
@@ -139,13 +124,10 @@ mod tests {
 	fn test_parse_global_datetime_space_hms() {
 		assert_eq!(
 			parse_global_datetime("2004-12-31 12:31:59"),
-			Some(DateTime::<Utc>::from_utc(
-				NaiveDateTime::new(
-					NaiveDate::from_ymd_opt(2004, 12, 31).unwrap(),
-					NaiveTime::from_hms_opt(12, 31, 59).unwrap(),
-				),
-				Utc
-			))
+			Some(Utc.from_utc_datetime(&NaiveDateTime::new(
+				NaiveDate::from_ymd_opt(2004, 12, 31).unwrap(),
+				NaiveTime::from_hms_opt(12, 31, 59).unwrap(),
+			)))
 		);
 	}
 
@@ -153,13 +135,10 @@ mod tests {
 	fn test_parse_global_datetime_space_hms_milliseconds() {
 		assert_eq!(
 			parse_global_datetime("2004-12-31 12:31:59.123"),
-			Some(DateTime::<Utc>::from_utc(
-				NaiveDateTime::new(
-					NaiveDate::from_ymd_opt(2004, 12, 31).unwrap(),
-					NaiveTime::from_hms_milli_opt(12, 31, 59, 123).unwrap(),
-				),
-				Utc
-			))
+			Some(Utc.from_utc_datetime(&NaiveDateTime::new(
+				NaiveDate::from_ymd_opt(2004, 12, 31).unwrap(),
+				NaiveTime::from_hms_milli_opt(12, 31, 59, 123).unwrap(),
+			)))
 		);
 	}
 
