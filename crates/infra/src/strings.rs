@@ -15,6 +15,9 @@ pub trait InfraStr {
 	fn collect_codepoints<P>(&self, position: &mut usize, predicate: P) -> String
 	where
 		P: FnMut(char) -> bool;
+	fn skip_codepoints<P>(&self, position: &mut usize, predicate: P)
+	where
+		P: FnMut(char) -> bool;
 }
 
 impl InfraStr for str {
@@ -39,6 +42,13 @@ impl InfraStr for str {
 		P: FnMut(char) -> bool,
 	{
 		collect_codepoints(self, position, predicate)
+	}
+
+	fn skip_codepoints<P>(&self, position: &mut usize, predicate: P)
+	where
+		P: FnMut(char) -> bool,
+	{
+		skip_codepoints(self, position, predicate)
 	}
 }
 
@@ -175,7 +185,7 @@ pub fn trim_collapse_ascii_whitespace(s: &str) -> String {
 /// assert_eq!(collected, String::from("test"));
 /// assert_eq!(position, 4);
 /// ```
-pub fn collect_codepoints<P>(s: &str, position: &mut usize, mut predicate: P) -> String
+pub fn collect_codepoints<P>(s: &str, position: &mut usize, predicate: P) -> String
 where
 	P: FnMut(char) -> bool,
 {
@@ -184,16 +194,9 @@ where
 	}
 
 	let mut result = String::with_capacity(s.len() - *position);
-	let rest = s.chars().skip(*position);
 	let starting_position = *position;
 
-	for c in rest {
-		if position < &mut s.len() && predicate(c) {
-			*position += 1;
-		} else {
-			break;
-		}
-	}
+	skip_codepoints(s, position, predicate);
 
 	result.push_str(&s[starting_position..*position]);
 	if result.len() < s.len() - *position {
@@ -201,6 +204,26 @@ where
 	}
 
 	result
+}
+
+/// A non-allocating version of [`collect_codepoints()`] for skipping/ignoring
+/// a series of codepoints that match a certain predicate
+pub fn skip_codepoints<P>(s: &str, position: &mut usize, mut predicate: P)
+where
+	P: FnMut(char) -> bool,
+{
+	if s.is_empty() || position >= &mut s.len() {
+		return;
+	}
+
+	let rest = s.chars().skip(*position);
+	for c in rest {
+		if position < &mut s.len() && predicate(c) {
+			*position += 1;
+		} else {
+			break;
+		}
+	}
 }
 
 #[cfg(test)]
@@ -285,5 +308,25 @@ mod test {
 		});
 
 		assert_eq!(collected, String::from("Apple    Banana    Orange"));
+	}
+
+	#[test]
+	fn skip_codepoints() {
+		let mut position = 0usize;
+		let s = "1234test";
+		s.skip_codepoints(&mut position, |c| c.is_ascii_digit());
+
+		assert_eq!(position, 4);
+		assert_eq!(&s[4..], "test");
+	}
+
+	#[test]
+	fn skip_codepoints_empty_str() {
+		let mut position = 0usize;
+		let s = "";
+		s.skip_codepoints(&mut position, |c| c.is_ascii_digit());
+
+		assert_eq!(position, 0);
+		assert_eq!(&s[0..], "");
 	}
 }
