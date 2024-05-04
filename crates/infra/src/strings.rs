@@ -210,6 +210,7 @@ where
 /// A non-allocating version of [`collect_codepoints()`] for skipping/ignoring
 /// a series of codepoints that match a certain predicate.
 ///
+/// # Examples
 /// ```
 /// use whatwg_infra::skip_codepoints;
 ///
