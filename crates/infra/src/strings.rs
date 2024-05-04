@@ -317,7 +317,17 @@ mod test {
 		s.skip_codepoints(&mut position, |c| c.is_ascii_digit());
 
 		assert_eq!(position, 4);
-		assert_eq!(&s[4..], "test");
+		assert_eq!(&s[position..], "test");
+	}
+
+	#[test]
+	fn skip_codepoints_no_matches_early_exit() {
+		let mut position = 0usize;
+		let s = "1234test";
+		s.skip_codepoints(&mut position, |c| c.is_ascii_alphabetic());
+
+		assert_eq!(position, 0);
+		assert_eq!(&s[position..], "1234test");
 	}
 
 	#[test]
@@ -327,6 +337,6 @@ mod test {
 		s.skip_codepoints(&mut position, |c| c.is_ascii_digit());
 
 		assert_eq!(position, 0);
-		assert_eq!(&s[0..], "");
+		assert_eq!(&s[position..], "");
 	}
 }
