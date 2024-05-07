@@ -402,6 +402,10 @@ mod test {
 	#[test]
 	fn impl_infrastr_for_string() {
 		assert_eq!(
+			String::from("\ralice\r\n\r\nbob\r").normalize_newlines(),
+			String::from("\nalice\n\nbob\n")
+		);
+		assert_eq!(
 			String::from("Alice\n\rBob").strip_newlines(),
 			String::from("AliceBob")
 		);
