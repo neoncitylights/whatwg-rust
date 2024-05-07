@@ -5,7 +5,6 @@ authors = [
 	"Samantha Nguyen, <contact@samanthanguyen.me>",
 ]
 description = "A Rust crate for parsing the datetime microsyntax, as defined by the WHATWG HTML Standard"
-homepage = "https://github.com/neoncitylights/whatwg-rust"
 repository = "https://github.com/neoncitylights/whatwg-rust"
 documentation = "https://docs.rs/whatwg-datetime"
 readme = "README.md"
@@ -13,19 +12,6 @@ license = "MIT OR Apache-2.0"
 edition = "2021"
 keywords = ["whatwg", "html", "html-datetime", "datetime"]
 categories = ["parsing", "text-processing"]
-exclude = [
-	".devcontainer",
-	".github",
-	".vscode",
-	".idea",
-	"deny.toml",
-	".commitlintrc.json",
-	"package.json",
-	"package-lock.json",
-	"fuzz",
-	"book",
-	"benches",
-]
 
 [dependencies]
 # chrono < 0.5 brings in a deprecated version of the `time` crate via `oldtime` feature by default
