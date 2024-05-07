@@ -1,7 +1,8 @@
 # whatwg-datetime
 
 [![License](https://img.shields.io/badge/License-MIT%20%26%20Apache%202.0-blue?style=flat-square)](#license)
-[![docs.rs](https://img.shields.io/docsrs/whatwg-infra/latest?style=flat-square)](https://docs.rs/whatwg-infra/)
+[![master docs](https://img.shields.io/github/deployments/neoncitylights/whatwg-rust/github-pages?style=flat-square&label=master%20docs)](https://neoncitylights.github.io/whatwg-rust/whatwg_datetime/index.html)
+[![docs.rs](https://img.shields.io/docsrs/whatwg-datetime/latest?style=flat-square&label=docs.rs)](https://docs.rs/whatwg-datetime/)
 [![CI](https://img.shields.io/github/actions/workflow/status/neoncitylights/whatwg-rust/.github/workflows/main.yml?style=flat-square)](https://github.com/neoncitylights/whatwg-rust/actions/workflows/main.yml)
 [![codecov](https://img.shields.io/codecov/c/github/neoncitylights/whatwg-rust?style=flat-square&logo=codecov&logoColor=%23fff)](https://codecov.io/github/neoncitylights/whatwg-rust)
 
