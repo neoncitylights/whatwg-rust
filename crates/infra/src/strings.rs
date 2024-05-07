@@ -19,6 +19,7 @@ pub trait InfraStr {
 	fn skip_codepoints<P>(&self, position: &mut usize, predicate: P)
 	where
 		P: FnMut(char) -> bool;
+	fn skip_ascii_whitespace(&self, position: &mut usize);
 }
 
 impl InfraStr for str {
@@ -51,6 +52,10 @@ impl InfraStr for str {
 	{
 		skip_codepoints(self, position, predicate)
 	}
+
+	fn skip_ascii_whitespace(&self, position: &mut usize) {
+		skip_ascii_whitespace(self, position)
+	}
 }
 
 impl InfraStr for String {
@@ -82,6 +87,10 @@ impl InfraStr for String {
 		P: FnMut(char) -> bool,
 	{
 		skip_codepoints(self.as_str(), position, predicate)
+	}
+
+	fn skip_ascii_whitespace(&self, position: &mut usize) {
+		skip_ascii_whitespace(self.as_str(), position)
 	}
 }
 
@@ -270,6 +279,27 @@ where
 			break;
 		}
 	}
+}
+
+/// Moves the index of a string until it passes all ASCII whitespace.
+///
+/// See also: [WHATWG Infra Standard definition][whatwg-infra-dfn]
+///
+/// [whatwg-infra-dfn]: https://infra.spec.whatwg.org/#skip-ascii-whitespace
+///
+/// # Examples
+/// ```
+/// use whatwg_infra::skip_ascii_whitespace;
+///
+/// let s = "\n\n\ntest";
+/// let mut position = 0usize;
+/// skip_ascii_whitespace("\n\n\ntest", &mut position);
+///
+/// assert_eq!(position, 3);
+/// assert_eq!(&s[position..], "test");
+/// ```
+pub fn skip_ascii_whitespace(s: &str, position: &mut usize) {
+	skip_codepoints(s, position, |c| c.is_ascii_whitespace())
 }
 
 #[cfg(test)]

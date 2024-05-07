@@ -4,6 +4,7 @@
 
 - Implemented `InfraStr` trait for the `String` type (previously only implemented for `str`).
 - Added `skip_codepoints()`, a non-allocating alternative of `collect_codepoints()`.
+- Added `skip_ascii_whitespace()`, a convenience function and implementation of [4.6. Strings § skip ASCII whitespace](https://infra.spec.whatwg.org/#skip-ascii-whitespace).
 
 ## 0.2.2 (2023-11-08)
 
