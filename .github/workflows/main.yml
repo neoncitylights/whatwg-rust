@@ -9,10 +9,10 @@ name: CI
 #
 # ## GitHub Actions
 #
-# This workflow avoids the following GitHub Actions at the moment:
-# - `actions-rs/cargo`: See https://github.com/actions-rs/cargo/issues/216 (Node.js 12)
-# - `actions-rs/toolchain`: See https://github.com/actions-rs/toolchain/issues/219 (Node.js 12)
-# - `actions-rs/tarpaulin`: This seems to be shaky, and will sometimes fail, and sometimes work.
+# This workflow previously used the following GitHub Actions, but no longer does:
+# - `actions-rs/cargo`: See https://github.com/actions-rs/cargo/issues/216 (uses Node.js 12)
+# - `actions-rs/toolchain`: See https://github.com/actions-rs/toolchain/issues/219 (uses Node.js 12)
+# - `actions-rs/tarpaulin`: This seems to be shaky (non-deterministic); it will sometimes fail or pass.
 #
 # For `actions-rs/cargo` and `actions-rs/toolchain`, we instead use
 # `cargo` and `rustup`  directly in the CLI instead respectively.
