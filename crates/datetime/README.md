@@ -1,9 +1,9 @@
 # `whatwg-datetime`
 
-[![License](https://img.shields.io/badge/License-MIT%20%26%20Apache%202.0-blue)](#license)
-[![CI](https://github.com/neoncitylights/whatwg-rust/actions/workflows/main.yml/badge.svg)](https://github.com/neoncitylights/whatwg-rust/actions/workflows/main.yml)
-[![Security audit](https://github.com/neoncitylights/whatwg-rust/actions/workflows/security-audit.yml/badge.svg)](https://github.com/neoncitylights/whatwg-rust/actions/workflows/security-audit.yml)
-[![codecov](https://codecov.io/github/neoncitylights/whatwg-rust/branch/main/graph/badge.svg?token=p3VPg9QCaE)](https://codecov.io/github/neoncitylights/whatwg-rust)
+[![License](https://img.shields.io/badge/License-MIT%20%26%20Apache%202.0-blue?style=flat-square)](#license)
+[![docs.rs](https://img.shields.io/docsrs/whatwg-infra/latest?style=flat-square)](https://docs.rs/whatwg-infra/)
+[![CI](https://img.shields.io/github/actions/workflow/status/neoncitylights/whatwg-rust/.github/workflows/main.yml?style=flat-square)](https://github.com/neoncitylights/whatwg-rust/actions/workflows/main.yml)
+[![codecov](https://img.shields.io/codecov/c/github/neoncitylights/whatwg-rust?style=flat-square&logo=codecov&logoColor=%23fff)](https://codecov.io/github/neoncitylights/whatwg-rust)
 
 A Rust crate for parsing the datetime microsyntax, as defined by the WHATWG HTML Standard.
 
