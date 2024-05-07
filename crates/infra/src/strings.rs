@@ -72,19 +72,18 @@ impl InfraStr for String {
 
 	fn collect_codepoints<P>(&self, position: &mut usize, predicate: P) -> String
 	where
-		P: FnMut(char) -> bool
+		P: FnMut(char) -> bool,
 	{
 		collect_codepoints(self.as_str(), position, predicate)
 	}
 
 	fn skip_codepoints<P>(&self, position: &mut usize, predicate: P)
 	where
-		P: FnMut(char) -> bool
+		P: FnMut(char) -> bool,
 	{
 		skip_codepoints(self.as_str(), position, predicate)
 	}
 }
-
 
 /// Replaces every U+000D U+000A pair of codepoints with a single U+000A
 /// codepoint, and any remaining U+000D codepoint with a U+000A codepoint.
