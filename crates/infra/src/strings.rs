@@ -418,18 +418,23 @@ mod test {
 			String::from("cat dog hamster")
 		);
 
-		let test = String::from("test!!!!!");
-		let mut position = 0usize;
-		let collected = test.collect_codepoints(&mut position, |c| c.is_ascii_alphabetic());
-		assert_eq!(collected, String::from("test"));
-		assert_eq!(position, 4);
+		{
+			let test = String::from("test!!!!!");
+			let mut position = 0usize;
+			let collected =
+				test.collect_codepoints(&mut position, |c| c.is_ascii_alphabetic());
+			assert_eq!(collected, String::from("test"));
+			assert_eq!(position, 4);
+		}
 
-		let s = String::from("1234test");
-		let mut position = 0usize;
+		{
+			let s = String::from("1234test");
+			let mut position = 0usize;
 
-		s.skip_codepoints(&mut position, |c| c.is_ascii_digit());
+			s.skip_codepoints(&mut position, |c| c.is_ascii_digit());
 
-		assert_eq!(position, 4);
-		assert_eq!(&s[position..], "test");
+			assert_eq!(position, 4);
+			assert_eq!(&s[position..], "test");
+		}
 	}
 }
