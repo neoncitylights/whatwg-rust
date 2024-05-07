@@ -4,8 +4,8 @@ A monorepo of Rust crates for various WHATWG standards.
 
 | Crate | Badges |
 | ----- | ------ |
-| [whatwg-infra](./crates/infra) | [![crates.io](https://img.shields.io/crates/v/whatwg-infra.svg)](https://crates.io/crates/whatwg-infra) [![docs.rs](https://docs.rs/whatwg-infra/badge.svg)](https://docs.rs/whatwg-infra)
-| [whatwg-datetime](./crates/datetime/) | [![crates.io](https://img.shields.io/crates/v/whatwg-datetime.svg)](https://crates.io/crates/whatwg-datetime) [![docs.rs](https://docs.rs/whatwg-datetime/badge.svg)](https://docs.rs/whatwg-datetime)
+| [whatwg-infra](./crates/infra) | [![crates.io](https://img.shields.io/crates/v/whatwg-infra.svg?style=flat-square)](https://crates.io/crates/whatwg-infra) [![docs.rs](https://img.shields.io/docsrs/whatwg-infra?style=flat-square&label=stable%20docs)](https://docs.rs/whatwg-infra) [![master docs](https://img.shields.io/github/deployments/neoncitylights/whatwg-rust/github-pages?style=flat-square&label=master%20docs)](https://neoncitylights.github.io/whatwg-rust/whatwg_infra/index.html)
+| [whatwg-datetime](./crates/datetime/) | [![crates.io](https://img.shields.io/crates/v/whatwg-datetime.svg?style=flat-square)](https://crates.io/crates/whatwg-datetime) [![docs.rs](https://img.shields.io/docsrs/whatwg-datetime?style=flat-square&label=stable%20docs)](https://docs.rs/whatwg-datetime) [![master docs](https://img.shields.io/github/deployments/neoncitylights/whatwg-rust/github-pages?style=flat-square&label=master%20docs)](https://neoncitylights.github.io/whatwg-rust/whatwg_datetime/index.html)
 
 ## License
 
