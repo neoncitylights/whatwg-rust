@@ -128,29 +128,6 @@ jobs:
     - name: Run tests with Miri
       run: cargo miri test
 
-  # bench:
-  #   name: bench
-  #   runs-on: ubuntu-latest
-  #   needs: build
-
-  #   steps:
-  #   - name: Checkout repository
-  #     uses: actions/checkout@v4
-  #   - name: Install Rust
-  #     run: |
-  #       rustup set profile minimal
-  #       rustup toolchain install stable
-  #       rustup override set stable
-  #   - name: Print environment info
-  #     run: |
-  #       rustc --version --verbose
-  #       cargo --version
-  #       rustup --version
-  #   - name: Install Valgrind
-  #     run: sudo apt install -y valgrind
-  #   - name: Run benchmarks
-  #     run: cargo bench --no-fail-fast
-
   codequality-check:
     name: codequality-check (${{ matrix.tool }})
     runs-on: ubuntu-latest
@@ -185,17 +162,3 @@ jobs:
           shared-key: full-build-cache
       - name: Run code quality assurance check (${{ matrix.tool }})
         run: ${{ matrix.cmd-check }}
-
-  ci-success:
-    name: ci-success
-    if: ${{ success() }}
-    needs:
-      - build
-      - test
-      - miri
-      # - bench
-      - codequality-check
-    runs-on: ubuntu-latest
-    steps:
-      - name: ✅ CI succeeded
-        run: exit 0
