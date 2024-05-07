@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["collect_codepoints","normalize_newlines","skip_codepoints","strip_newlines","trim_ascii_whitespace","trim_collapse_ascii_whitespace"],"trait":["InfraStr"]};

@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["is_leading_surrogate_utf16","is_surrogate_utf16","is_trailing_surrogate_utf16"],"trait":["InfraUtf16Surrogate"]};
