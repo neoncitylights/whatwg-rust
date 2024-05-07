@@ -71,7 +71,6 @@ impl InfraUtf16Surrogate for u16 {
 #[must_use]
 #[inline]
 pub const fn is_surrogate_utf16(c: u16) -> bool {
-	//matches!(c, 0xD800u16..=0xDFFFu16)
 	matches!(c, u16::SURROGATE_MIN..=u16::SURROGATE_MAX)
 }
 
