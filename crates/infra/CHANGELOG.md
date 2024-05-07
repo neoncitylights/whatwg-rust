@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased (YYYY-MM-DD)
+## 1.0.0 (2024-05-07)
 
 - Implemented `InfraStr` trait for the `String` type (previously only implemented for `str`).
 - Added `skip_codepoints()`, a non-allocating alternative of `collect_codepoints()`.
