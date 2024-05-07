@@ -53,6 +53,39 @@ impl InfraStr for str {
 	}
 }
 
+impl InfraStr for String {
+	fn normalize_newlines(&self) -> String {
+		normalize_newlines(self.as_str())
+	}
+
+	fn strip_newlines(&self) -> String {
+		strip_newlines(self.as_str())
+	}
+
+	fn trim_ascii_whitespace(&self) -> &str {
+		trim_ascii_whitespace(self.as_str())
+	}
+
+	fn trim_collapse_ascii_whitespace(&self) -> String {
+		trim_collapse_ascii_whitespace(self.as_str())
+	}
+
+	fn collect_codepoints<P>(&self, position: &mut usize, predicate: P) -> String
+	where
+		P: FnMut(char) -> bool
+	{
+		collect_codepoints(self.as_str(), position, predicate)
+	}
+
+	fn skip_codepoints<P>(&self, position: &mut usize, predicate: P)
+	where
+		P: FnMut(char) -> bool
+	{
+		skip_codepoints(self.as_str(), position, predicate)
+	}
+}
+
+
 /// Replaces every U+000D U+000A pair of codepoints with a single U+000A
 /// codepoint, and any remaining U+000D codepoint with a U+000A codepoint.
 ///
