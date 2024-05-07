@@ -293,7 +293,7 @@ where
 ///
 /// let s = "\n\n\ntest";
 /// let mut position = 0usize;
-/// skip_ascii_whitespace("\n\n\ntest", &mut position);
+/// skip_ascii_whitespace(s, &mut position);
 ///
 /// assert_eq!(position, 3);
 /// assert_eq!(&s[position..], "test");
