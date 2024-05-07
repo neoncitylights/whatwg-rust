@@ -53,6 +53,38 @@ impl InfraStr for str {
 	}
 }
 
+impl InfraStr for String {
+	fn normalize_newlines(&self) -> String {
+		normalize_newlines(self.as_str())
+	}
+
+	fn strip_newlines(&self) -> String {
+		strip_newlines(self.as_str())
+	}
+
+	fn trim_ascii_whitespace(&self) -> &str {
+		trim_ascii_whitespace(self.as_str())
+	}
+
+	fn trim_collapse_ascii_whitespace(&self) -> String {
+		trim_collapse_ascii_whitespace(self.as_str())
+	}
+
+	fn collect_codepoints<P>(&self, position: &mut usize, predicate: P) -> String
+	where
+		P: FnMut(char) -> bool,
+	{
+		collect_codepoints(self.as_str(), position, predicate)
+	}
+
+	fn skip_codepoints<P>(&self, position: &mut usize, predicate: P)
+	where
+		P: FnMut(char) -> bool,
+	{
+		skip_codepoints(self.as_str(), position, predicate)
+	}
+}
+
 /// Replaces every U+000D U+000A pair of codepoints with a single U+000A
 /// codepoint, and any remaining U+000D codepoint with a U+000A codepoint.
 ///
@@ -365,5 +397,44 @@ mod test {
 
 		assert_eq!(position, 0);
 		assert_eq!(&s[position..], "");
+	}
+
+	#[test]
+	fn impl_infrastr_for_string() {
+		assert_eq!(
+			String::from("\ralice\r\n\r\nbob\r").normalize_newlines(),
+			String::from("\nalice\n\nbob\n")
+		);
+		assert_eq!(
+			String::from("Alice\n\rBob").strip_newlines(),
+			String::from("AliceBob")
+		);
+		assert_eq!(
+			String::from("     ").trim_ascii_whitespace(),
+			String::from("")
+		);
+		assert_eq!(
+			String::from("\r  \n  cat dog  hamster").trim_collapse_ascii_whitespace(),
+			String::from("cat dog hamster")
+		);
+
+		{
+			let test = String::from("test!!!!!");
+			let mut position = 0usize;
+			let collected =
+				test.collect_codepoints(&mut position, |c| c.is_ascii_alphabetic());
+			assert_eq!(collected, String::from("test"));
+			assert_eq!(position, 4);
+		}
+
+		{
+			let s = String::from("1234test");
+			let mut position = 0usize;
+
+			s.skip_codepoints(&mut position, |c| c.is_ascii_digit());
+
+			assert_eq!(position, 4);
+			assert_eq!(&s[position..], "test");
+		}
 	}
 }
