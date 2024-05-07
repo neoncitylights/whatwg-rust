@@ -1,4 +1,4 @@
-# `whatwg-datetime`
+# whatwg-datetime
 
 [![License](https://img.shields.io/badge/License-MIT%20%26%20Apache%202.0-blue?style=flat-square)](#license)
 [![docs.rs](https://img.shields.io/docsrs/whatwg-infra/latest?style=flat-square)](https://docs.rs/whatwg-infra/)
