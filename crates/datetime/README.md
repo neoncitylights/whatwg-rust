@@ -19,17 +19,16 @@ cargo add whatwg-datetime
 This library currently implements 8 of the 9 datetime formats defined by the WHATWG HTML Standard. The only format not implemented is the duration format, which is tracked in [issue #29](https://github.com/neoncitylights/whatwg-rust/issues/29).
 
 ```rust
-use chrono::{DateTime, NaiveDate, NaiveDateTime, NaiveTime, Utc};
+use chrono::{NaiveDate, NaiveDateTime, NaiveTime, TimeZone, Utc};
 use whatwg_datetime::parse_global_datetime;
 
 assert_eq!(
 	parse_global_datetime("2011-11-18T14:54Z"),
-	Some(DateTime::<Utc>::from_utc(
-		NaiveDateTime::new(
+	Some(Utc.from_utc_datetime(
+		&NaiveDateTime::new(
 			NaiveDate::from_ymd_opt(2011, 11, 18).unwrap(),
 			NaiveTime::from_hms_opt(14, 54, 0).unwrap(),
-		),
-		Utc,
+		)
 	))
 );
 ```

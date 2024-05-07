@@ -11,18 +11,17 @@ use chrono::{DateTime, Duration, NaiveDateTime, TimeZone, Utc};
 /// # Examples
 /// A global date-time string with a time (hours and minutes):
 /// ```
-/// use chrono::{DateTime, NaiveDate, NaiveDateTime, NaiveTime, Utc};
+/// use chrono::{NaiveDate, NaiveDateTime, NaiveTime, TimeZone, Utc};
 /// use whatwg_datetime::parse_global_datetime;
 ///
 /// assert_eq!(
-///     parse_global_datetime("2011-11-18T14:54Z"),
-///     Some(DateTime::<Utc>::from_utc(
-///         NaiveDateTime::new(
-///             NaiveDate::from_ymd_opt(2011, 11, 18).unwrap(),
-///             NaiveTime::from_hms_opt(14, 54, 0).unwrap(),
-///         ),
-///         Utc,
-///     ))
+/// 	parse_global_datetime("2011-11-18T14:54Z"),
+/// 	Some(Utc.from_utc_datetime(
+/// 		&NaiveDateTime::new(
+/// 			NaiveDate::from_ymd_opt(2011, 11, 18).unwrap(),
+/// 			NaiveTime::from_hms_opt(14, 54, 0).unwrap(),
+/// 		)
+/// 	))
 /// );
 /// ```
 ///
