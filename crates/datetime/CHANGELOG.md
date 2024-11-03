@@ -5,6 +5,7 @@
 ## 0.1.1 (2024-11-03)
 
 * Fix/update repository URLs
+* Bump dependency of whatwg-infra from v1.0.0 to v1.1.0
 
 ## 0.1.0 (2023-05-26)
 
