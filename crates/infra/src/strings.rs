@@ -476,5 +476,15 @@ mod test {
 			assert_eq!(position, 4);
 			assert_eq!(&s[position..], "test");
 		}
+
+		{
+			let s = String::from("   test");
+			let mut position = 0usize;
+
+			s.skip_ascii_whitespace(&mut position);
+
+			assert_eq!(position, 3);
+			assert_eq!(&s[position..], "test");
+		}
 	}
 }
