@@ -430,6 +430,16 @@ mod test {
 	}
 
 	#[test]
+	fn skip_ascii_whitespace() {
+		let s = "   test";
+		let mut position = 0usize;
+		s.skip_ascii_whitespace(&mut position);
+
+		assert_eq!(position, 3);
+		assert_eq!(&s[position..], "test");
+	}
+
+	#[test]
 	fn impl_infrastr_for_string() {
 		assert_eq!(
 			String::from("\ralice\r\n\r\nbob\r").normalize_newlines(),
