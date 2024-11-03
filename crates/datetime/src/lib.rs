@@ -9,7 +9,7 @@ cargo add whatwg-datetime
 
 ## Usage
 
-This library currently implements 8 of the 9 datetime formats defined by the WHATWG HTML Standard. The only format not implemented is the duration format, which is tracked in [issue #29](https://github.com/neoncitylights/whatwg-rust/issues/29).
+This library currently implements 8 of the 9 datetime formats defined by the WHATWG HTML Standard. The only format not implemented is the duration format, which is tracked in [issue #23](https://github.com/neoncitylights/whatwg-rust/issues/23).
 
 ```rust
 use chrono::{NaiveDate, NaiveDateTime, NaiveTime, TimeZone, Utc};

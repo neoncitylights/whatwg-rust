@@ -18,4 +18,4 @@ categories = ["parsing", "text-processing"]
 # this makes it explicitly not do this as there is an advisory warning against this:
 # See: https://github.com/chronotope/chrono/issues/602
 chrono = { version = "0.4", default-features = false, features = ["clock", "std", "wasmbind"] }
-whatwg-infra = { version = "1.0.0", path = "../infra" }
+whatwg-infra = { version = "1.1.0", path = "../infra" }
