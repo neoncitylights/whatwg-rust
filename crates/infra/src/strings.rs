@@ -19,6 +19,7 @@ pub trait InfraStr {
 	fn skip_codepoints<P>(&self, position: &mut usize, predicate: P)
 	where
 		P: Fn(char) -> bool;
+	fn skip_ascii_whitespace(&self, position: &mut usize);
 }
 
 impl InfraStr for str {
@@ -51,6 +52,10 @@ impl InfraStr for str {
 	{
 		skip_codepoints(self, position, predicate)
 	}
+
+	fn skip_ascii_whitespace(&self, position: &mut usize) {
+		skip_ascii_whitespace(self, position)
+	}
 }
 
 impl InfraStr for String {
@@ -82,6 +87,10 @@ impl InfraStr for String {
 		P: Fn(char) -> bool,
 	{
 		skip_codepoints(self.as_str(), position, predicate)
+	}
+
+	fn skip_ascii_whitespace(&self, position: &mut usize) {
+		skip_ascii_whitespace(self.as_str(), position)
 	}
 }
 
@@ -272,6 +281,27 @@ where
 	}
 }
 
+/// Moves the index of a string until it passes all ASCII whitespace.
+///
+/// See also: [WHATWG Infra Standard definition][whatwg-infra-dfn]
+///
+/// [whatwg-infra-dfn]: https://infra.spec.whatwg.org/#skip-ascii-whitespace
+///
+/// # Examples
+/// ```
+/// use whatwg_infra::skip_ascii_whitespace;
+///
+/// let s = "\n\n\ntest";
+/// let mut position = 0usize;
+/// skip_ascii_whitespace(s, &mut position);
+///
+/// assert_eq!(position, 3);
+/// assert_eq!(&s[position..], "test");
+/// ```
+pub fn skip_ascii_whitespace(s: &str, position: &mut usize) {
+	skip_codepoints(s, position, |c| c.is_ascii_whitespace())
+}
+
 #[cfg(test)]
 mod test {
 	use super::*;
@@ -400,6 +430,16 @@ mod test {
 	}
 
 	#[test]
+	fn skip_ascii_whitespace() {
+		let s = "   test";
+		let mut position = 0usize;
+		s.skip_ascii_whitespace(&mut position);
+
+		assert_eq!(position, 3);
+		assert_eq!(&s[position..], "test");
+	}
+
+	#[test]
 	fn impl_infrastr_for_string() {
 		assert_eq!(
 			String::from("\ralice\r\n\r\nbob\r").normalize_newlines(),
@@ -434,6 +474,16 @@ mod test {
 			s.skip_codepoints(&mut position, |c| c.is_ascii_digit());
 
 			assert_eq!(position, 4);
+			assert_eq!(&s[position..], "test");
+		}
+
+		{
+			let s = String::from("   test");
+			let mut position = 0usize;
+
+			s.skip_ascii_whitespace(&mut position);
+
+			assert_eq!(position, 3);
 			assert_eq!(&s[position..], "test");
 		}
 	}
