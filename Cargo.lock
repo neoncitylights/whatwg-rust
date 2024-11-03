@@ -222,7 +222,7 @@ dependencies = [
 
 [[package]]
 name = "whatwg-infra"
-version = "1.0.0"
+version = "1.1.0"
 
 [[package]]
 name = "windows-core"
