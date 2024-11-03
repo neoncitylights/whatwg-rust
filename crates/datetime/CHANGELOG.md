@@ -2,7 +2,7 @@
 
 ## Unreleased (YYYY-MM-DD)
 
-## 0.1.1 (2023-11-08)
+## 0.1.1 (2024-11-03)
 
 * Fix/update repository URLs
 
