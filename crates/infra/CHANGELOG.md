@@ -1,10 +1,15 @@
 # Changelog
 
-## Unreleased (YYYY-MM-DD)
+## 1.0.0 (2024-05-07)
 
 - Implemented `InfraStr` trait for the `String` type (previously only implemented for `str`).
 - Added `skip_codepoints()`, a non-allocating alternative of `collect_codepoints()`.
 - Added `skip_ascii_whitespace()`, a convenience function and implementation of [4.6. Strings § skip ASCII whitespace](https://infra.spec.whatwg.org/#skip-ascii-whitespace).
+- Simplifies the function signatures of the following:
+  - `collect_codepoints()` now takes a generic parameter `P` that must satisfy `Fn(char) -> bool` (previously `FnMut(char) -> bool`)
+  - `skip_codepoints()` now takes a generic parameter `P` that must satisfy `Fn(char) -> bool` (previously `FnMut(char) -> bool`)
+  - `skip_codepoints()` no longer takes a mutable parameter for `predicate` of `P` (now `predicate: P` instead of `mut predicate: P`)
+  - `InfraStr` trait follows suit with the same changes mentioned above
 
 ## 0.2.2 (2023-11-08)
 

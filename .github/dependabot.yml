@@ -8,23 +8,9 @@ updates:
   - package-ecosystem: "cargo"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     commit-message:
-      prefix: "chore(deps/cargo):"
-    labels:
-      - "t-dependencies"
-      - "pkg-cargo"
-    open-pull-requests-limit: 4
-
-  - package-ecosystem: "cargo"
-    directory: "/fuzz"
-    schedule:
-      interval: "weekly"
-    commit-message:
-      prefix: "chore(deps/cargo):"
-    labels:
-      - "t-dependencies"
-      - "pkg-cargo"
+      prefix: "deps(cargo):"
     open-pull-requests-limit: 4
 
   - package-ecosystem: "github-actions"
@@ -32,19 +18,5 @@ updates:
     schedule:
       interval: "weekly"
     commit-message:
-      prefix: "chore(deps/actions):"
-    labels:
-      - "t-dependencies"
-      - "pkg-gh-actions"
-    open-pull-requests-limit: 4
-
-  - package-ecosystem: "npm"
-    directory: "/book"
-    schedule:
-      interval: "weekly"
-    commit-message:
-      prefix: "chore(deps/npm):"
-    labels:
-      - "t-dependencies"
-      - "pkg-npm"
+      prefix: "deps(gha):"
     open-pull-requests-limit: 4

@@ -14,11 +14,11 @@ pub trait InfraStr {
 	/// See the documentation for [`collect_codepoints()`]
 	fn collect_codepoints<P>(&self, position: &mut usize, predicate: P) -> String
 	where
-		P: FnMut(char) -> bool;
+		P: Fn(char) -> bool;
 	/// See the documentation for [`skip_codepoints()`]
 	fn skip_codepoints<P>(&self, position: &mut usize, predicate: P)
 	where
-		P: FnMut(char) -> bool;
+		P: Fn(char) -> bool;
 	fn skip_ascii_whitespace(&self, position: &mut usize);
 }
 
@@ -41,14 +41,14 @@ impl InfraStr for str {
 
 	fn collect_codepoints<P>(&self, position: &mut usize, predicate: P) -> String
 	where
-		P: FnMut(char) -> bool,
+		P: Fn(char) -> bool,
 	{
 		collect_codepoints(self, position, predicate)
 	}
 
 	fn skip_codepoints<P>(&self, position: &mut usize, predicate: P)
 	where
-		P: FnMut(char) -> bool,
+		P: Fn(char) -> bool,
 	{
 		skip_codepoints(self, position, predicate)
 	}
@@ -77,14 +77,14 @@ impl InfraStr for String {
 
 	fn collect_codepoints<P>(&self, position: &mut usize, predicate: P) -> String
 	where
-		P: FnMut(char) -> bool,
+		P: Fn(char) -> bool,
 	{
 		collect_codepoints(self.as_str(), position, predicate)
 	}
 
 	fn skip_codepoints<P>(&self, position: &mut usize, predicate: P)
 	where
-		P: FnMut(char) -> bool,
+		P: Fn(char) -> bool,
 	{
 		skip_codepoints(self.as_str(), position, predicate)
 	}
@@ -229,7 +229,7 @@ pub fn trim_collapse_ascii_whitespace(s: &str) -> String {
 /// ```
 pub fn collect_codepoints<P>(s: &str, position: &mut usize, predicate: P) -> String
 where
-	P: FnMut(char) -> bool,
+	P: Fn(char) -> bool,
 {
 	if s.is_empty() || position >= &mut s.len() {
 		return String::new();
@@ -263,9 +263,9 @@ where
 /// assert_eq!(position, 5);
 /// assert_eq!(&s[position..], "_bob");
 /// ```
-pub fn skip_codepoints<P>(s: &str, position: &mut usize, mut predicate: P)
+pub fn skip_codepoints<P>(s: &str, position: &mut usize, predicate: P)
 where
-	P: FnMut(char) -> bool,
+	P: Fn(char) -> bool,
 {
 	if s.is_empty() || position >= &mut s.len() {
 		return;
