@@ -1,4 +1,4 @@
-use crate::tokens::{TOKEN_ABBR_WEEK, TOKEN_HYPHEN};
+use crate::tokens::Token;
 use crate::utils::{collect_ascii_digits, week_number_of_year};
 
 /// A week date consisting of a year and a week number.
@@ -110,14 +110,14 @@ pub fn parse_week(input: &str) -> Option<YearWeek> {
 	}
 
 	// Step 5
-	if position > input.len() || input.chars().nth(position) != Some(TOKEN_HYPHEN) {
+	if position > input.len() || input.chars().nth(position) != Some(Token::HYPHEN) {
 		return None;
 	} else {
 		position += 1;
 	}
 
 	// Step 6
-	if position > input.len() || input.chars().nth(position) != Some(TOKEN_ABBR_WEEK) {
+	if position > input.len() || input.chars().nth(position) != Some(Token::ABBR_WEEK) {
 		return None;
 	} else {
 		position += 1;

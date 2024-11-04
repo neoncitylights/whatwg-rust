@@ -1,5 +1,5 @@
 use crate::parse_format;
-use crate::tokens::{TOKEN_COLON, TOKEN_DOT};
+use crate::tokens::Token;
 use crate::utils::{collect_ascii_digits, is_valid_hour, is_valid_min_or_sec};
 use chrono::NaiveTime;
 use whatwg_infra::collect_codepoints;
@@ -65,7 +65,7 @@ pub fn parse_time_component(s: &str, position: &mut usize) -> Option<NaiveTime> 
 		return None;
 	}
 
-	if *position > s.len() || s.chars().nth(*position) != Some(TOKEN_COLON) {
+	if *position > s.len() || s.chars().nth(*position) != Some(Token::COLON) {
 		return None;
 	} else {
 		*position += 1;
@@ -82,7 +82,7 @@ pub fn parse_time_component(s: &str, position: &mut usize) -> Option<NaiveTime> 
 
 	let mut seconds = 0u32;
 	let mut milliseconds = 0u32;
-	if *position < s.len() && s.chars().nth(*position) == Some(TOKEN_COLON) {
+	if *position < s.len() && s.chars().nth(*position) == Some(Token::COLON) {
 		*position += 1;
 
 		if *position >= s.len() {
@@ -90,12 +90,12 @@ pub fn parse_time_component(s: &str, position: &mut usize) -> Option<NaiveTime> 
 		}
 
 		let parsed_second =
-			collect_codepoints(s, position, |c| c.is_ascii_digit() || c == TOKEN_DOT);
+			collect_codepoints(s, position, |c| c.is_ascii_digit() || c == Token::DOT);
 		let parsed_second_len = parsed_second.len();
 		if parsed_second_len == 3
 			|| (parsed_second_len > 3
-				&& parsed_second.chars().nth(2) != Some(TOKEN_DOT))
-			|| has_at_least_n_instances(s, TOKEN_DOT, 2)
+				&& parsed_second.chars().nth(2) != Some(Token::DOT))
+			|| has_at_least_n_instances(s, Token::DOT, 2)
 		{
 			return None;
 		}
@@ -126,7 +126,7 @@ fn has_at_least_n_instances(s: &str, c: char, n: usize) -> bool {
 }
 
 fn parse_seconds_milliseconds(s: &str) -> (u32, u32) {
-	let parts: Vec<&str> = s.split(TOKEN_DOT).collect();
+	let parts: Vec<&str> = s.split(Token::DOT).collect();
 	let seconds = parts.first().unwrap_or(&"0").parse().unwrap_or(0);
 	let milliseconds = parts.get(1).unwrap_or(&"0").parse().unwrap_or(0);
 

@@ -1,13 +1,17 @@
-// pub(crate) const TOKEN_ABBR_DAY: char = 'D';
-// pub(crate) const TOKEN_ABBR_HOUR: char = 'H';
-// pub(crate) const TOKEN_ABBR_MIN: char = 'M';
-// pub(crate) const TOKEN_ABBR_SEC: char = 'S';
-pub(crate) const TOKEN_ABBR_WEEK: char = 'W';
-pub(crate) const TOKEN_HYPHEN: char = '-';
-pub(crate) const TOKEN_COLON: char = ':';
-pub(crate) const TOKEN_T: char = 'T';
-pub(crate) const TOKEN_Z: char = 'Z';
-pub(crate) const TOKEN_PLUS: char = '+';
-pub(crate) const TOKEN_MINUS: char = '-';
-pub(crate) const TOKEN_DOT: char = '.';
-pub(crate) const TOKEN_SPACE: char = ' ';
+pub(crate) struct Token;
+
+impl Token {
+	// pub const ABBR_DAY: char = 'D';
+	// pub const ABBR_HOUR: char = 'H';
+	// pub const ABBR_MIN: char = 'M';
+	// pub const ABBR_SEC: char = 'S';
+	pub const ABBR_WEEK: char = 'W';
+	pub const HYPHEN: char = '-';
+	pub const COLON: char = ':';
+	pub const T: char = 'T';
+	pub const Z: char = 'Z';
+	pub const PLUS: char = '+';
+	pub const MINUS: char = '-';
+	pub const DOT: char = '.';
+	pub const SPACE: char = ' ';
+}
