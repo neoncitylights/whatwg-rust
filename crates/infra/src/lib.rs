@@ -1,4 +1,4 @@
-//! //! A tiny Rust crate that implements parts of the WHATWG Infra Standard. Specifically, it implements the following:
+//! A tiny Rust crate that implements parts of the WHATWG Infra Standard. Specifically, it implements the following:
 //!
 //! - [4.5. Code points](https://infra.spec.whatwg.org/#code-points)
 //! - [4.6. Strings](https://infra.spec.whatwg.org/#strings)
