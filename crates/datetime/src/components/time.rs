@@ -126,7 +126,7 @@ fn has_at_least_n_instances(s: &str, c: char, n: usize) -> bool {
 }
 
 fn parse_seconds_milliseconds(s: &str) -> (u32, u32) {
-	let parts: Vec<&str> = s.split(TOKEN_DOT).collect();
+	let parts: Vec<&str> = s.split(Token::DOT).collect();
 	let seconds = parts.first().unwrap_or(&"0").parse().unwrap_or(0);
 	let milliseconds = parts.get(1).unwrap_or(&"0").parse().unwrap_or(0);
 
