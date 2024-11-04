@@ -18,10 +18,10 @@ You can import individual functions:
 
 ```rust
 use whatwg_infra::{
-	is_ascii_tab_newline,
-	is_c0_control,
-	is_c0_control_space,
-	is_noncharacter
+    is_ascii_tab_newline,
+    is_c0_control,
+    is_c0_control_space,
+    is_noncharacter
 };
 
 assert!(is_ascii_tab_newline('\t'));

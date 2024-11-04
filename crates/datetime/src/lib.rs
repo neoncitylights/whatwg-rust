@@ -16,13 +16,13 @@ use chrono::{NaiveDate, NaiveDateTime, NaiveTime, TimeZone, Utc};
 use whatwg_datetime::parse_global_datetime;
 
 assert_eq!(
-	parse_global_datetime("2011-11-18T14:54Z"),
-	Some(Utc.from_utc_datetime(
-		&NaiveDateTime::new(
-			NaiveDate::from_ymd_opt(2011, 11, 18).unwrap(),
-			NaiveTime::from_hms_opt(14, 54, 0).unwrap(),
-		)
-	))
+    parse_global_datetime("2011-11-18T14:54Z"),
+    Some(Utc.from_utc_datetime(
+        &NaiveDateTime::new(
+            NaiveDate::from_ymd_opt(2011, 11, 18).unwrap(),
+            NaiveTime::from_hms_opt(14, 54, 0).unwrap(),
+        )
+    ))
 );
 ```
 */
