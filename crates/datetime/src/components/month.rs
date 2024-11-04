@@ -1,4 +1,4 @@
-use crate::tokens::TOKEN_HYPHEN;
+use crate::tokens::Token;
 use crate::utils::{collect_ascii_digits, is_valid_month};
 use crate::{collect_month_and_validate, parse_format};
 
@@ -132,7 +132,7 @@ pub fn parse_month_component(s: &str, position: &mut usize) -> Option<YearMonth>
 		return None;
 	}
 
-	if *position > s.len() || s.chars().nth(*position) != Some(TOKEN_HYPHEN) {
+	if *position > s.len() || s.chars().nth(*position) != Some(Token::HYPHEN) {
 		return None;
 	} else {
 		*position += 1;

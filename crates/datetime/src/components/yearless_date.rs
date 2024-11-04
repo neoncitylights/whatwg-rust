@@ -1,4 +1,4 @@
-use crate::tokens::TOKEN_HYPHEN;
+use crate::tokens::Token;
 use crate::utils::is_valid_month;
 use crate::{collect_day_and_validate, collect_month_and_validate, parse_format};
 use whatwg_infra::collect_codepoints;
@@ -137,13 +137,13 @@ pub fn parse_yearless_date(s: &str) -> Option<YearlessDate> {
 /// [whatwg-html-yearless]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#yearless-dates
 /// [whatwg-html-parse]: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#parse-a-yearless-date-component
 pub fn parse_yearless_date_component(s: &str, position: &mut usize) -> Option<YearlessDate> {
-	let collected = collect_codepoints(s, position, |c| c == TOKEN_HYPHEN);
+	let collected = collect_codepoints(s, position, |c| c == Token::HYPHEN);
 	if !matches!(collected.len(), 0 | 2) {
 		return None;
 	}
 
 	let month = collect_month_and_validate(s, position)?;
-	if *position > s.len() || s.chars().nth(*position) != Some(TOKEN_HYPHEN) {
+	if *position > s.len() || s.chars().nth(*position) != Some(Token::HYPHEN) {
 		return None;
 	} else {
 		*position += 1;
